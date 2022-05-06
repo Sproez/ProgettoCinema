@@ -18,7 +18,7 @@ namespace ProgettoCinema.WebClient.Controller
         // GET: Film
         public async Task<IActionResult> Index()
         {
-            var cinemaDbContext = _context.Movies.Include(f => f.Genere);
+            var cinemaDbContext = _context.Film.Include(f => f.Genere);
             return View(await cinemaDbContext.ToListAsync());
         }
 
@@ -30,7 +30,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return NotFound();
             }
 
-            var film = await _context.Movies
+            var film = await _context.Film
                 .Include(f => f.Genere)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (film == null)
@@ -73,7 +73,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return NotFound();
             }
 
-            var film = await _context.Movies.FindAsync(id);
+            var film = await _context.Film.FindAsync(id);
             if (film == null)
             {
                 return NotFound();
@@ -126,7 +126,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return NotFound();
             }
 
-            var film = await _context.Movies
+            var film = await _context.Film
                 .Include(f => f.Genere)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (film == null)
@@ -142,15 +142,15 @@ namespace ProgettoCinema.WebClient.Controller
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var film = await _context.Movies.FindAsync(id);
-            _context.Movies.Remove(film);
+            var film = await _context.Film.FindAsync(id);
+            _context.Film.Remove(film);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FilmExists(int id)
         {
-            return _context.Movies.Any(e => e.Id == id);
+            return _context.Film.Any(e => e.Id == id);
         }
     }
 }

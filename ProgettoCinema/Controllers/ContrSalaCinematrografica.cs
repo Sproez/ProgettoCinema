@@ -46,7 +46,7 @@ namespace ProgettoCinema.WebClient.Controller
         public IActionResult Create()
         {
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Name");
-            ViewData["FilmId"] = new SelectList(_context.Movies, "Id", "Author");
+            ViewData["FilmId"] = new SelectList(_context.Film, "Id", "Author");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Name", salaCinematografica.CinemaId);
-            ViewData["FilmId"] = new SelectList(_context.Movies, "Id", "Author", salaCinematografica.FilmId);
+            ViewData["FilmId"] = new SelectList(_context.Film, "Id", "Author", salaCinematografica.FilmId);
             return View(salaCinematografica);
         }
 
@@ -82,7 +82,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return NotFound();
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Name", salaCinematografica.CinemaId);
-            ViewData["FilmId"] = new SelectList(_context.Movies, "Id", "Author", salaCinematografica.FilmId);
+            ViewData["FilmId"] = new SelectList(_context.Film, "Id", "Author", salaCinematografica.FilmId);
             return View(salaCinematografica);
         }
 
@@ -119,7 +119,7 @@ namespace ProgettoCinema.WebClient.Controller
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "Name", salaCinematografica.CinemaId);
-            ViewData["FilmId"] = new SelectList(_context.Movies, "Id", "Author", salaCinematografica.FilmId);
+            ViewData["FilmId"] = new SelectList(_context.Film, "Id", "Author", salaCinematografica.FilmId);
             return View(salaCinematografica);
         }
 

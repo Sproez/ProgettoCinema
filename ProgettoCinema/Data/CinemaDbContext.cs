@@ -7,7 +7,7 @@ public class CinemaDbContext : DbContext
 {
     public DbSet<Biglietto> Biglietti { get; set; }
     public DbSet<Cinema> Cinemas { get; set; }
-    public DbSet<Film> Movies { get; set; }
+    public DbSet<Film> Film { get; set; }
     public DbSet<Genere> GenereFilm { get; set; }
     public DbSet<SalaCinematografica> SaleCinematografiche { get; set; }
     public DbSet<Spettatore> Spettatori { get; set; }
@@ -53,38 +53,38 @@ public class CinemaDbContext : DbContext
             .HasOne(f => f.Genere)
             .WithMany(fg => fg.Film)
             .OnDelete(DeleteBehavior.NoAction)
-            .HasForeignKey(f => f.FilmGenreId);
+            .HasForeignKey(f => f.Genere);
 
-        var filmGenre = modelBuilder.Entity<Genere>();
-        filmGenre.HasKey(fg => fg.Id);
-        filmGenre.Property(fg => fg.GenereFilm).IsRequired();
+        var genere = modelBuilder.Entity<Genere>();
+        genere.HasKey(fg => fg.Id);
+        genere.Property(fg => fg.GenereFilm).IsRequired();
 
-        var cinemaRoom = modelBuilder.Entity<SalaCinematografica>();
-        cinemaRoom.HasKey(cr => cr.Id);
-        cinemaRoom.Property(cr => cr.Cinema).IsRequired();
-        cinemaRoom.Property(cr => cr.CinemaId).IsRequired();
-        cinemaRoom.Property(cr => cr.MaxSpettatori).IsRequired();
-        cinemaRoom.Property(cr => cr.PostiOccupati);
+        var salaCinema = modelBuilder.Entity<SalaCinematografica>();
+        salaCinema.HasKey(cr => cr.Id);
+        salaCinema.Property(cr => cr.Cinema).IsRequired();
+        salaCinema.Property(cr => cr.CinemaId).IsRequired();
+        salaCinema.Property(cr => cr.MaxSpettatori).IsRequired();
+        salaCinema.Property(cr => cr.PostiOccupati);
 
-        cinemaRoom
+        salaCinema
             .HasOne(cr => cr.Cinema)
             .WithMany(c => c.SaleCinematografiche)
             .OnDelete(DeleteBehavior.NoAction)
             .HasForeignKey(cr => cr.CinemaId);
-        cinemaRoom
+        salaCinema
             .HasOne(cr => cr.Film)
             .WithMany(f => f.saleCinematografiche)
             .OnDelete(DeleteBehavior.NoAction)
             .HasForeignKey(cr => cr.FilmId);
 
-        var person = modelBuilder.Entity<Spettatore>();
-        person.HasKey(p => p.Id);
-        person.Property(p => p.Id).IsRequired();
-        person.Property(p => p.Cognome).IsRequired();
-        person.Property(p => p.DataNascita).IsRequired();
-        person.Property(p => p.Anziano).IsRequired();
-        person.Property(p => p.Bambino).IsRequired();
-        person.Property(p => p.biglietto).IsRequired();
+        var cliente = modelBuilder.Entity<Spettatore>();
+        cliente.HasKey(p => p.Id);
+        cliente.Property(p => p.Id).IsRequired();
+        cliente.Property(p => p.Cognome).IsRequired();
+        cliente.Property(p => p.DataNascita).IsRequired();
+        cliente.Property(p => p.Anziano).IsRequired();
+        cliente.Property(p => p.Bambino).IsRequired();
+        cliente.Property(p => p.biglietto).IsRequired();
     }
 }
 

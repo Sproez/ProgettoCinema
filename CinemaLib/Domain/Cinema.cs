@@ -3,7 +3,7 @@
 public class Cinema : Base
 
     {
-    public string salaId { get; init; }
+    public string salaId { get; init; } = null!;
 
     public double Guadagno { get; init; }
 
