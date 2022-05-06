@@ -14,22 +14,8 @@ public class Spettatore
 
     public string Cognome { get; set; } = null!;
 
-    public DateTime DataNasita { get; set; }
+    public DateTime DataNascita { get; set; }
 
     public Biglietto Biglietto { get; set; }
 
-    public static bool Minorenne (DateTime bornIn)
-    {
-        return (bornIn.AddYears(18) < DateTime.Now);
-    }
-
-    public static bool Anziano (DateTime bornIn)
-    {
-        return (bornIn.AddYears(70) >= DateTime.Now);
-    }
-
-    public static bool Bambino (DateTime bornIn)
-    {
-        return (bornIn.AddYears(5) <= DateTime.Now);
-    }
 }

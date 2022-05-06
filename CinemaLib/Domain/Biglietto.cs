@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace CinemaLib.Domain;
 
-    public class Biglietto
+    public abstract class Biglietto
     {
     public string idPosto { get; set; } = null!;
 
-    public int Prezzo { get; set; } = 10;
+    public abstract double Sconto();
 
-    
-}
+    private readonly double Costo = 10;
+
+    public double Prezzo()
+    {
+
+        return Costo - (Costo/100 * Sconto());
+    }
+
+    }
 
