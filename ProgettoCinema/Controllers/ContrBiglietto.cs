@@ -45,7 +45,7 @@ namespace ProgettoCinema.WebClient.Controller
         // GET: Biglietto/Create
         public IActionResult Create()
         {
-            ViewData["CinemaRoomId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name");
+            ViewData["salaId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name");
             ViewData["PersonId"] = new SelectList(_context.Spettatori, "Id", "Name");
             return View();
         }
@@ -55,7 +55,7 @@ namespace ProgettoCinema.WebClient.Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Seat,Price,CinemaRoomId,PersonId,Id")] Biglietto biglietto)
+        public async Task<IActionResult> Create([Bind("Seat,Price,salaId,PersonId,Id")] Biglietto biglietto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace ProgettoCinema.WebClient.Controller
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CinemaRoomId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
+            ViewData["salaId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
             ViewData["PersonId"] = new SelectList(_context.Spettatori, "Id", "Name", biglietto.Cliente);
             return View(biglietto);
         }
@@ -81,7 +81,7 @@ namespace ProgettoCinema.WebClient.Controller
             {
                 return NotFound();
             }
-            ViewData["CinemaRoomId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
+            ViewData["salaId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
             ViewData["PersonId"] = new SelectList(_context.Spettatori, "Id", "Name", biglietto.Cliente);
             return View(biglietto);
         }
@@ -91,7 +91,7 @@ namespace ProgettoCinema.WebClient.Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Seat,Price,CinemaRoomId,PersonId,Id")] Biglietto biglietto)
+        public async Task<IActionResult> Edit(int id, [Bind("Seat,Price,salaId,PersonId,Id")] Biglietto biglietto)
         {
             if (id != biglietto.Id)
             {
@@ -118,7 +118,7 @@ namespace ProgettoCinema.WebClient.Controller
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CinemaRoomId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
+            ViewData["salaId"] = new SelectList(_context.SaleCinematografiche, "Id", "Name", biglietto.salaId);
             ViewData["PersonId"] = new SelectList(_context.Spettatori, "Id", "Name", biglietto.Cliente);
             return View(biglietto);
         }

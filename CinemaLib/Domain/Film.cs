@@ -12,7 +12,7 @@ public class Film : Base
 
     public int Durata { get; set; }
 
-    public int CinemaRoomId { get; set; }
+    public int salaId { get; set; }
 
     public ICollection<SalaCinematografica> saleCinematografiche { get; set; } = null!;
 }

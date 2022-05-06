@@ -1,5 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CinemaLib.Domain.Film
+
 @{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<h4>Film</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titolo" class="control-label"></label>
+                <input asp-for="Titolo" class="form-control" />
+                <span asp-validation-for="Titolo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autore" class="control-label"></label>
+                <input asp-for="Autore" class="form-control" />
+                <span asp-validation-for="Autore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produttore" class="control-label"></label>
+                <input asp-for="Produttore" class="form-control" />
+                <span asp-validation-for="Produttore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="salaId" class="control-label"></label>
+                <input asp-for="salaId" class="form-control" />
+                <span asp-validation-for="salaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genere" class="control-label"></label>
+                <select asp-for="Genere" class="form-control" asp-items="ViewBag.FilmGenreId"></select>
+                <span asp-validation-for="Genere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Durata" class="control-label"></label>
+                <input asp-for="Durata" class="form-control" />
+                <span asp-validation-for="Durata" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

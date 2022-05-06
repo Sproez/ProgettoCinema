@@ -53,7 +53,7 @@ namespace ProgettoCinema.WebClient.Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Author,Producer,CinemaRoomId,FilmGenreId,Duration,Id")] Film film)
+        public async Task<IActionResult> Create([Bind("Title,Author,Producer,salaId,FilmGenreId,Duration,Id")] Film film)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ProgettoCinema.WebClient.Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Title,Author,Producer,CinemaRoomId,FilmGenreId,Duration,Id")] Film film)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Author,Producer,salaId,FilmGenreId,Duration,Id")] Film film)
         {
             if (id != film.Id)
             {

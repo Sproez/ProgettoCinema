@@ -47,7 +47,7 @@ public class CinemaDbContext : DbContext
         film.Property(f => f.Autore).IsRequired();
         film.Property(f => f.Produttore).IsRequired();
         film.Property(f => f.Genere).IsRequired();
-        film.Property(f => f.CinemaRoomId).IsRequired();
+        film.Property(f => f.salaId).IsRequired();
 
         //film
         //    .HasOne(f => f.Genere)
