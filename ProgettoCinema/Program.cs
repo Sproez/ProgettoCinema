@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using ProgettoCinema.ClientWeb.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<CinemaDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDatabase")));
 
 var app = builder.Build();
 
@@ -23,3 +28,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+

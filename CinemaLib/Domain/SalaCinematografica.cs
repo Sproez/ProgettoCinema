@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CinemaLib.Domain;
 
-namespace CinemaLib.Domain;
-
-    public class SalaCinematografica : Base
+public class SalaCinematografica : Base
     {
     public string CinemaId { get; set; } = null!;
 
@@ -16,10 +10,10 @@ namespace CinemaLib.Domain;
 
     public string FilmId { get; set; } = null!;
 
-    public Film Film { get; set; }
+    public Film Film { get; set; } = null!;
 
-    public Cinema Cinema { get; set; }
+    public Cinema Cinema { get; set; } = null!;
 
-    public ICollection<Biglietto> Biglietti { get; set; }
+    public ICollection<Biglietto> Biglietti { get; set; } = null!;
 }
 

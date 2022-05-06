@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CinemaLib.Domain;
 
-namespace CinemaLib.Domain;
-
-    public class Genere : Base
+public class Genere : Base
     {
-        public string GenereFilm { get; set; }
+        public string GenereFilm { get; set; } = null!;
 
-        public ICollection<Film> Films { get; set; }
+    public ICollection<Film> Films { get; set; } = null!;
 
-    }
+}
 

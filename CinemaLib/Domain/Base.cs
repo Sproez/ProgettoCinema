@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CinemaLib.Domain;
 
-namespace CinemaLib.Domain;
-
-   public abstract class Base
+public abstract class Base
 
    {
     public int Id { get; set; }

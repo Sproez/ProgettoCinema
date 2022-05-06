@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
+using CinemaLib.Domain;
 using Microsoft.EntityFrameworkCore;
-using ProgettoCinema.API.Data;
-using CinemaLib;
+using ProgettoCinema.ClientWeb.Data;
 
 namespace ProgettoCinema.API.Repository;
 
@@ -18,8 +18,8 @@ public class GenericRepository<TEntity> where TEntity : Base
     }
 
     public virtual async Task<IEnumerable<TEntity>> Get(
-        Expression<Func<TEntity, bool>> filter = null,
-        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+        Expression<Func<TEntity, bool>> filter = null!,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null!,
         string includeProperties = "")
     {
         IQueryable<TEntity> query = dbSet;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CinemaLib.Domain;
+﻿namespace CinemaLib.Domain;
 
 public class Spettatore : Base
 {
@@ -16,7 +10,7 @@ public class Spettatore : Base
 
     public DateTime DataNascita { get; set; }
 
-    public Biglietto idBiglietto { get; set; }
+    public Biglietto idBiglietto { get; set; } = null!;
 
     //public bool Anziano { get; set; }
 
@@ -36,7 +30,7 @@ public class Spettatore : Base
 
     }
 
-    public Biglietto biglietto { get; set; }
+    public Biglietto biglietto { get; set; } = null!;
 
     public bool Geriatria()
     {

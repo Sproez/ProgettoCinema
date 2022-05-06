@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CinemaLib.Domain;
+﻿namespace CinemaLib.Domain;
 
 public abstract class Biglietto : Base
     {
@@ -24,8 +18,8 @@ public abstract class Biglietto : Base
 
     public int SpettatoreId { get; set; }
 
-    public Spettatore Cliente { get; set; } 
-    public SalaCinematografica SaleCinematografiche { get; set; } 
+    public Spettatore Cliente { get; set; } = null!;
+    public SalaCinematografica SaleCinematografiche { get; set; } = null!;
 
 }
 
