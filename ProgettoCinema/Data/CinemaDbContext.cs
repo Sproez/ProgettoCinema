@@ -49,11 +49,11 @@ public class CinemaDbContext : DbContext
         film.Property(f => f.Genere).IsRequired();
         film.Property(f => f.CinemaRoomId).IsRequired();
 
-        film
-            .HasOne(f => f.Genere)
-            .WithMany(fg => fg.Film)
-            .OnDelete(DeleteBehavior.NoAction)
-            .HasForeignKey(f => f.Genere);
+        //film
+        //    .HasOne(f => f.Genere)
+        //    .WithMany(fg => fg.Film)
+        //    .OnDelete(DeleteBehavior.NoAction)
+        //    .HasForeignKey(f => f.Genere);
 
         var genere = modelBuilder.Entity<Genere>();
         genere.HasKey(fg => fg.Id);

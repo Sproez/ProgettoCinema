@@ -1,0 +1,49 @@
+﻿@model CinemaLib.Domain.Biglietto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Update</h1>
+
+<h4>Biglietto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idPosto" class="control-label"></label>
+                <input asp-for="idPosto" class="form-control" />
+                <span asp-validation-for="idPosto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Costo" class="control-label"></label>
+                <input asp-for="Costo" class="form-control" />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaleCinematografiche" class="control-label"></label>
+                <select asp-for="SaleCinematografiche" class="form-control" asp-items="ViewBag.SaleCinematografiche"></select>
+                <span asp-validation-for="SaleCinematografiche" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpettatoreId" class="control-label"></label>
+                <select asp-for="SpettatoreId" class="form-control" asp-items="ViewBag.SpettatoreId"></select>
+                <span asp-validation-for="SpettatoreId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
