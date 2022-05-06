@@ -8,16 +8,28 @@ namespace CinemaLib.Domain;
 
 public class Spettatore
 {
-    public string idSpettatore { get; set; }
+    public string idSpettatore { get; set; } = null!;
 
-    public string Nome { get; set; }
+    public string Nome { get; set; } = null!;
 
-    public string Cognome { get; set; }
+    public string Cognome { get; set; } = null!;
 
     public DateTime DataNasita { get; set; }
 
-    public int Biglietto { get; set; }
+    public Biglietto Biglietto { get; set; }
 
-    public bool
+    public static bool Minorenne (DateTime bornIn)
+    {
+        return (bornIn.AddYears(18) < DateTime.Now);
+    }
 
+    public static bool Anziano (DateTime bornIn)
+    {
+        return (bornIn.AddYears(70) >= DateTime.Now);
+    }
+
+    public static bool Bambino (DateTime bornIn)
+    {
+        return (bornIn.AddYears(5) <= DateTime.Now);
+    }
 }
