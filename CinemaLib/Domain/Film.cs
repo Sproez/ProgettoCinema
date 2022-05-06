@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaLib.Domain;
 
-    public record Film()
+    public class Film : Base
     {
     public string Titolo { get; set; } = null!;
 
@@ -17,5 +17,9 @@ namespace CinemaLib.Domain;
     public string Produttore { get; set; } = null!;
 
     public int Durata { get; set; }
+
+    public int CinemaRoomId { get; set; }
+
+    public ICollection<SalaCinematografica> saleCinematografiche { get; set; }
 }
 

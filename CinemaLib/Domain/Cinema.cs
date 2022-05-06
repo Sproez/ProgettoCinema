@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace CinemaLib.Domain;
 
-    public record Cinema
-    (
-        string Name
-    )
+    public class Cinema : Base
 
     {
-    public int Id { get; init; }
+    public string salaId { get; init; }
 
-    public List<SalaCinematografica> SalaCinematografiche { get; set; } = null!;
+    public double Guadagno { get; init; }
+
+    public ICollection<SalaCinematografica> SaleCinematografiche { get; set; } = null!;
     
     }
 

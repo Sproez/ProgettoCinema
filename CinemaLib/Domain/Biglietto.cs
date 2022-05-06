@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CinemaLib.Domain;
 
-    public abstract class Biglietto
+public abstract class Biglietto : Base
     {
     public string idPosto { get; set; } = null!;
 
     public abstract double Sconto();
 
-    private readonly double Costo = 10;
+    public readonly double Costo = 10;
 
     public double Prezzo()
     {
@@ -20,5 +20,12 @@ namespace CinemaLib.Domain;
         return Costo - (Costo/100 * Sconto());
     }
 
-    }
+    public int salaId { get; set; }
+
+    public int SpettatoreId { get; set; }
+
+    public Spettatore Cliente { get; set; } 
+    public SalaCinematografica SaleCinematografiche { get; set; } 
+
+}
 

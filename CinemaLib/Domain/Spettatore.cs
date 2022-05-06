@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaLib.Domain;
 
-public class Spettatore
+public class Spettatore : Base
 {
     public string idSpettatore { get; set; } = null!;
 
@@ -16,6 +16,37 @@ public class Spettatore
 
     public DateTime DataNascita { get; set; }
 
-    public Biglietto Biglietto { get; set; }
+    public Biglietto idBiglietto { get; set; }
+
+    //public bool Anziano { get; set; }
+
+    public bool Anziano
+    {
+        get => Anziano;
+        set => Anziano = Geriatria();
+
+    }
+
+    //public bool Bambino { get; set; } 
+
+    public bool Bambino
+    {
+        get => Bambino;
+        set => Bambino = Burlo();
+
+    }
+
+    public Biglietto biglietto { get; set; }
+
+    public bool Geriatria()
+    {
+        return DataNascita.AddYears(70) < DateTime.Now;
+    }
+
+    public bool Burlo()
+    {
+        return DataNascita.AddYears(5) > DateTime.Now;
+
+    }
 
 }
